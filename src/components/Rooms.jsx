@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Rooms = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className='max-w-[1400px] h-[500px] bg-blue-100 mx-auto my-20 pt-16 lg:mb-[20%] md:mb-[35%] px-4 grid lg:grid-cols-3 gap-4'>
+    <div className={`max-w-[1400px] h-[500px] ${darkMode ? 'bg-blue-900' : 'bg-blue-100'} mx-auto my-20 pt-16 lg:mb-[20%] md:mb-[35%] px-4 grid lg:grid-cols-3 gap-4`}>
       <div className='lg:top-20 relative lg:col-span-1 col-span-2'>
-        <h3 className='text-2xl font-bold'>OUR COURSE PROGRAMS</h3>
-        <p className='pt-4'>
+        <h3 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>OUR COURSE PROGRAMS</h3>
+        <p className={`pt-4 ${darkMode ? 'text-white' : 'text-black'}`}>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error ipsam
           rerum iusto excepturi similique minus?
         </p>
