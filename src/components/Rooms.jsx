@@ -18,21 +18,31 @@ const Rooms = () => {
       </div>
 
       <div className='grid grid-cols-2 col-span-2 gap-2'>
+        <div className="relative hover:scale-105">
+          <img
+            className='object-cover w-full h-full'
+            src='https://img.freepik.com/premium-vector/voice-assistant-sound-wave-microphone-voice-control-technology-voice-sound-recognition-ai-assistant-voice-background_176516-289.jpg'
+            alt='/'
+          />
+          <div className="absolute inset-0 bg-black opacity-0 hover:opacity-65 transition-opacity duration-300 flex items-center justify-center">
+            <button className="bg-white text-black px-4 py-2 rounded">Learn More</button>
+          </div>
+        </div>
         <img
-        className='object-cover w-full h-full'
-          src='https://img.freepik.com/premium-vector/voice-assistant-sound-wave-microphone-voice-control-technology-voice-sound-recognition-ai-assistant-voice-background_176516-289.jpg'
-          alt='/'
-        />
-        <img
-        className='row-span-2 object-cover w-full h-full'
+          className='row-span-2 object-cover w-full h-full relative'
           src='https://wallpapers.com/images/hd/programming-iphone-java-logo-on-black-0hnhv8ki7x2rjgyu.jpg'
           alt='/'
         />
-        <img
-        className='object-cover w-full h-full'
-          src='https://codequotient.com/blog/wp-content/uploads/2023/03/How-to-Ace-Your-Online-Coding-Test-Tips-and-Tricks-from-Experts.jpg'
-          alt='/'
-        />
+        <div className="relative hover:scale-105">
+          <img
+            className='object-cover w-full h-full'
+            src='https://codequotient.com/blog/wp-content/uploads/2023/03/How-to-Ace-Your-Online-Coding-Test-Tips-and-Tricks-from-Experts.jpg'
+            alt='/'
+          />
+          <div className="absolute inset-0 bg-black opacity-0 hover:opacity-65 transition-opacity duration-300 flex items-center justify-center">
+            <button className="bg-white text-black px-4 py-2 rounded">Learn More</button>
+          </div>
+        </div>
       </div>
     </div>
   );
