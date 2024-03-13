@@ -26,7 +26,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className='absolute w-full flex justify-between p-4 items-center'>
+        <div className='absolute w-full flex justify-between p-4 items-center bg-[#0a192f] bg-opacity-2'>
             <h1 className='text-white font-bold text-2xl z-20'>Interns Innovation</h1>
             <div className='flex items-center '>
                 <SlMenu onClick={handleNav} className='z-20 text-white cursor-pointer mr-6' size={25} />

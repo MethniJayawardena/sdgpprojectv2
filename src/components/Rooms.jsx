@@ -30,7 +30,7 @@ const Rooms = () => {
         </div>
         <img
           className='row-span-2 object-cover w-full h-full relative'
-          src='https://wallpapers.com/images/hd/programming-iphone-java-logo-on-black-0hnhv8ki7x2rjgyu.jpg'
+          src='https://img.freepik.com/free-photo/hacker-man-laptop_144627-25494.jpg?t=st=1710226873~exp=1710230473~hmac=3555c9bb605e57978282ed1003e517ff9ae5a13913c72f11ea21cda3a63fb2a7&w=740'
           alt='/'
         />
         <div className="relative hover:scale-105">
