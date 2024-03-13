@@ -46,7 +46,7 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className='max-w-[1400px] h-[580px] w-full m-auto py-24 px-4 relative group'>
+    <div className='max-w-[1400px] h-[580px] w-full m-auto py-24 px-4 relative group mb-20'>
       {/* Title */}
       <h3 className='text-5xl md:text-6xl font-bold text-center mb-8 ubuntu-bold'  style={poppins} >Welcome to The Era of Innovation !</h3>
       {/* Slider */}

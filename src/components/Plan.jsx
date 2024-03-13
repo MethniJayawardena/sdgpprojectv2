@@ -46,7 +46,7 @@ const Plan = () => {
         </p>
         <div>
          
-          <button className='bg-black text-white border-black hover:shadow-xl   py-2 px-4 md:py-2md:px-4'>Book Session</button>
+          <button className='bg-black text-white border-black hover:shadow-xl   py-2 px-4 md:py-2md:px-4'>View Plans</button>
         </div>
       </div>
     </div>
