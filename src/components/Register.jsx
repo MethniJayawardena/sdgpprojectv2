@@ -68,7 +68,7 @@ const Register = () => {
                 </div>
                 <button className='border w-full my-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white'>Create Account</button>
                 <div className='flex flex-col justify-center'>
-                <p className='flex items-center font-bold'>Already have an account?<Link to='/login' className='ml-2 text-indigo-600'>Login</Link></p>
+                <p className='flex items-center '>Already have an account?<Link to='/login' className='ml-2 text-indigo-600 font-bold'>Login</Link></p>
                 
                 </div>
             </form>
