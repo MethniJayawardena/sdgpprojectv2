@@ -17,3 +17,12 @@
   font-weight: bold;
   font-style: normal;
 }
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark-mode {
+  background-color: #222;
+  color: #fff;
+}
