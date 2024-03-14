@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useRef, useEffect, useContext, useState } from 'react';
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import Logo from '../images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 
 const Navbar = () => {
+  
+  const headerRef = useRef(null);
+    const navigate = useNavigate();
+    const {user,dispatch} = useContext(AuthContext)
+
+    const logout = ()=>{
+        dispatch({type:'LOGOUT'})
+        navigate('/')
+    }
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
+
+
 
   return (
     <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300 z-10'>
@@ -38,6 +50,31 @@ const Navbar = () => {
             Contact us
           </Link>
         </li>
+
+        {user? (
+          <>
+          <h5 className="mb-0 flex justify-between items-center px-4">Welcome to Internova {user.username}</h5>
+          <button className="mr-10" onClick={logout}>
+          Logout
+          </button>
+          
+          </> 
+          ):(<>
+            <li className="mr-10"> {/* Add margin-right for spacing */}
+            <Link to='/login' smooth={true} duration={500}>
+             Login
+            </Link>
+            </li>
+            <li className="mr-10"> {/* Add margin-right for spacing */}
+            <Link to='/register' smooth={true} duration={500}>
+              Register
+            </Link>
+            </li>
+              </>
+
+          )
+        }
+        
       </ul>
 
       {/* Hamburger */}
@@ -71,6 +108,16 @@ const Navbar = () => {
         <li className='py-6 text-4xl'>
           <Link onClick={handleClick} to='/contact' smooth={true} duration={500}>
             Contact
+          </Link>
+        </li>
+        <li className='py-6 text-4xl'>
+          <Link onClick={handleClick} to='/login' smooth={true} duration={500}>
+            Login
+          </Link>
+        </li>
+        <li className='py-6 text-4xl'>
+          <Link onClick={handleClick} to='/register' smooth={true} duration={500}>
+            Register
           </Link>
         </li>
       </ul>
