@@ -7,7 +7,8 @@ import Plans from './components/Subscription.jsx'
 import ContactUs from './pages/ContactUs.jsx';
 import Footer from './components/Footer.jsx';
 import Login from './components/Login.jsx';
-import Demo from './frontendUI/demo.jsx'
+import Demo from './frontendUI/demo.jsx';
+import Register from './components/Register.jsx';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/plans" element={<Plans />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
         </Routes>
         <Footer/>
         
