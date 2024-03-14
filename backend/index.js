@@ -10,10 +10,10 @@ import authRoute from './routes/auth.js';
 dotenv.config();
 const app =express();
 const port = process.env.PORT || 8000; // Default port is 8000 if PORT is not defined in .env
-// const corsOptions = {
-//     origin:true,
-//     credentials:true
-// }
+const corsOptions = {
+    origin:true,
+    credentials:true
+}
 
 mongoose.set("strictQuery",false);
 
@@ -37,10 +37,10 @@ app.get("/",(req,res)=>{
 })
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
-app.use('/auth', authRoute)
-app.use('/users', userRoute)
+app.use('/api/v2/auth', authRoute)
+app.use('/api/v2/users', userRoute)
 
 app.listen(port,()=>{
     connect();
