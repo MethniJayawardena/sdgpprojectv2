@@ -53,8 +53,9 @@ const Navbar = () => {
 
         {user? (
           <>
-          <h5 className="mb-0 flex justify-between items-center px-4">Welcome to Internova {user.username}</h5>
-          <button className="mr-10" onClick={logout}>
+          <h5 className="mb-0  px-10">Welcome to Internova {user.username}</h5>
+          
+          <button className="mr-10 text-white group border-2 flex items-center hover:bg-pink-600 hover:border-pink-600" onClick={logout}>
           Logout
           </button>
           
