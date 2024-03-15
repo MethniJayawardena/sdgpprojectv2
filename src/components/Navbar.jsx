@@ -3,12 +3,13 @@ import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import Logo from '../images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate, useLocation} from 'react-router-dom';
+import {AuthContext} from './../context/AuthContext';
 
 
 const Navbar = () => {
-  
-  const headerRef = useRef(null);
+
+    const headerRef = useRef(null);
     const navigate = useNavigate();
     const {user,dispatch} = useContext(AuthContext)
 
