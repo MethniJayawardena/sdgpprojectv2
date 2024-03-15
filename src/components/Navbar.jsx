@@ -3,8 +3,7 @@ import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import Logo from '../images/logo.png';
-import { Link, useNavigate} from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -18,6 +17,7 @@ const Navbar = () => {
         navigate('/')
     }
   const [nav, setNav] = useState(false);
+  const location = useLocation();
   const handleClick = () => setNav(!nav);
 
 
@@ -30,24 +30,28 @@ const Navbar = () => {
 
       {/* menu */}
       <ul className='hidden md:flex'>
-        <li className="mr-10"> {/* Add margin-right for spacing */}
-          <Link to='/' smooth={true} duration={500}>
+        <li className="mr-10">
+          <Link to='/' style={{ textDecoration: 'none', position: 'relative' }} className={`nav-link ${location.pathname === '/' ? 'text-pink-500' : ''}`} smooth={true} duration={500}>
             Home
+            {location.pathname === '/' && <div style={{ position: 'absolute', bottom: '-8px', left: 0, width: '100%', height: '2px', backgroundColor: '#ff69b4' }} />}
           </Link>
         </li>
-        <li className="mr-10"> {/* Add margin-right for spacing */}
-          <Link to='/plans' smooth={true} duration={500}>
+        <li className="mr-10">
+          <Link to='/plans' style={{ textDecoration: 'none', position: 'relative' }} className={`nav-link ${location.pathname === '/plans' ? 'text-pink-500' : ''}`} smooth={true} duration={500}>
             Plans
+            {location.pathname === '/plans' && <div style={{ position: 'absolute', bottom: '-8px', left: 0, width: '100%', height: '2px', backgroundColor: '#ff69b4' }} />}
           </Link>
         </li>
-        <li className="mr-10"> {/* Add margin-right for spacing */}
-          <Link to='/about' smooth={true} duration={500}>
+        <li className="mr-10">
+          <Link to='/about' style={{ textDecoration: 'none', position: 'relative' }} className={`nav-link ${location.pathname === '/about' ? 'text-pink-500' : ''}`} smooth={true} duration={500}>
             About Us
+            {location.pathname === '/about' && <div style={{ position: 'absolute', bottom: '-8px', left: 0, width: '100%', height: '2px', backgroundColor: '#ff69b4' }} />}
           </Link>
         </li>
-        <li className="mr-10"> {/* Add margin-right for spacing */}
-          <Link to='/contact' smooth={true} duration={500}>
+        <li className="mr-10">
+          <Link to='/contact' style={{ textDecoration: 'none', position: 'relative' }} className={`nav-link ${location.pathname === '/contact' ? 'text-pink-500' : ''}`} smooth={true} duration={500}>
             Contact us
+            {location.pathname === '/contact' && <div style={{ position: 'absolute', bottom: '-8px', left: 0, width: '100%', height: '2px', backgroundColor: '#ff69b4' }} />}
           </Link>
         </li>
 
