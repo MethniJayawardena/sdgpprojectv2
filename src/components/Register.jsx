@@ -10,7 +10,10 @@ const Register = () => {
     const [credentials, setCredentials] = useState({
         userName: undefined,
         email: undefined,
-        password: undefined
+        password: undefined,
+        address: undefined,
+        fullname: undefined,
+        age: undefined
 
     });
 
@@ -54,6 +57,18 @@ const Register = () => {
         <div className='bg-gray-100 flex flex-col justify-center'>
             <form onSubmit={handleClick} className='max-w-[400px] w-full mx-auto bg-white p-4'>
                 <h2 className='text-4xl font-bold text-center py-6'>INTERNOVA.</h2>
+                <div className='flex flex-col py-2'>
+                <label>Full Name</label>
+                <input type="text" className='border p-2' required id="fullname" onChange={handleChange}/>
+                </div>
+                <div className='flex flex-col py-2'>
+                <label>Address</label>
+                <input type="text" className='border p-2' required id="address" onChange={handleChange}/>
+                </div>
+                <div className='flex flex-col py-2'>
+                <label>Age</label>
+                <input type="text" className='border p-2' required id="age" onChange={handleChange}/>
+                </div>
                 <div className='flex flex-col py-2'>
                 <label>Username</label>
                 <input type="text" className='border p-2' required id="username" onChange={handleChange}/>
