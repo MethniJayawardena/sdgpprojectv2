@@ -17,11 +17,13 @@ const Register = () => {
 
     });
 
+    const [error, setError] = useState('');
     const {dispatch} = useContext (AuthContext)
     const navigate = useNavigate()
 
     const handleChange = e => {
         setCredentials(prev=>({...prev,[e.target.id]:e.target.value}))
+        setError('');
     };
 
 
@@ -40,10 +42,16 @@ const Register = () => {
             })
             const result = await res.json(credentials);
 
-            if(!res.ok) alert(result.message);
+            if(!res.ok) {
+                setError(result.message);
+                // alert(result.message);
+                
+            }
 
+            if (res.ok) {
             dispatch({type:'REGISTER_SUCCESS'});
             navigate('/login');
+            }
 
         }catch (err){
             alert(err.message);
@@ -85,6 +93,7 @@ const Register = () => {
                     <label>Password</label>
                     <input type="password" className='border p-2' required id="password" onChange={handleChange}/>
                 </div>
+                {error && <p className="bg-red-100 text-red-900 text-sm px-4 py-2 mb-4 rounded-md">{error}</p>} 
                 <button className='border w-full my-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white'>Create Account</button>
                 <div className='flex flex-col justify-center'>
                 <p className='flex items-center '>Already have an account?<Link to='/login' className='ml-2 text-indigo-600 font-bold'>Login</Link></p>
