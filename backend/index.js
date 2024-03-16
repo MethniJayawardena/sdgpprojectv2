@@ -32,6 +32,7 @@ const connect = async()=>{
     }
 }
 
+
 app.get("/",(req,res)=>{
     res.send("api is working")
 })

@@ -24,8 +24,11 @@ const Register = () => {
         setCredentials(prev=>({...prev,[e.target.id]:e.target.value}))
     };
 
+
     const handleClick = async e =>{
         e.preventDefault();
+
+       
 
         try {
             const res = await fetch (`${BASE_URL}/auth/register`,{
@@ -47,6 +50,7 @@ const Register = () => {
 
     }
 }
+
   
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
