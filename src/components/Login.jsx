@@ -13,6 +13,8 @@ const Login = () => {
 
     });
 
+    const [error, setError] = useState('');
+
     const {dispatch} = useContext (AuthContext)
     const navigate = useNavigate()
 
@@ -37,16 +39,27 @@ const Login = () => {
             });
 
             const result = await res.json()
-            if(!res.ok) alert (result.message);
+            if (!res.ok) {
+                setError(result.message); // Set error message if login fails
+                setCredentials({email:'', password:''});
+            }
 
-            console.log(result.data);
+            // console.log(result.data);
+            if (res.ok) {
+                dispatch({ type: 'LOGIN_SUCCESS', payload: result.data });
+                navigate('/');
 
-            dispatch({type:'LOGIN_SUCCESS', payload:result.data});
-            navigate('/');
+            }
+      
 
+            // dispatch({type:'LOGIN_SUCCESS', payload:result.data});
+            
             
         } catch (err) {
+            setError('Failed to login. Please try again.'); // Set generic error message
+
             dispatch({type:'LOGIN_FAILURE', payload:err.message});
+            setCredentials({ email: '', password: '' });
             
         }
     };
@@ -68,6 +81,8 @@ const Login = () => {
                     <label>Password</label>
                     <input type="password" className='border p-2' required id="password" onChange={handleChange}/>
                 </div>
+                {error && <p className="bg-red-100 text-red-900 text-sm px-4 py-2 mb-4 rounded-md">{error}</p>}
+
                 <button className='border w-full my-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white'>Login</button>
                 <div className='flex justify-between'>
                 <p>Don't have an account? <Link to ='/register' className='ml-2 text-indigo-600 font-bold'>Create</Link></p>

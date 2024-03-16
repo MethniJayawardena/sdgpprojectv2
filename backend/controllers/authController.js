@@ -29,8 +29,8 @@ export const register = async (req,res)=>{
     }catch(err){        
         res.status(500).json({success:false, message: 'Failed to create. Try again'});
 }
-    
-};
+
+}
 
 export const login = async (req,res) =>{
 
@@ -50,7 +50,7 @@ export const login = async (req,res) =>{
             .status(401)
             .json({
                 success:false, 
-                message: 'Incorrect email or password'})
+                message: 'Incorrect email or password. Please Try Again!'})
         }
 
         const {password,role,...rest} = user._doc;
