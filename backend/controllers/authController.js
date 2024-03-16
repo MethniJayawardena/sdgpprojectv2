@@ -7,6 +7,18 @@ export const register = async (req,res)=>{
     
     try{
 
+        // Check if the username is already taken
+        const existingUsername = await User.findOne({ username: req.body.username });
+        if (existingUsername) {
+            return res.status(400).json({ success: false, message: 'Username already taken' });
+        }
+
+        // Check if the email is already taken
+        const existingEmail = await User.findOne({ email: req.body.email });
+        if (existingEmail) {
+            return res.status(400).json({ success: false, message: 'Email already taken' });
+        }
+
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(req.body.password,salt)
 
