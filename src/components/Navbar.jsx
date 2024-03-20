@@ -51,7 +51,7 @@ const Navbar = () => {
         </li>
         <li className="mr-10">
           <Link to='/contact' style={{ textDecoration: 'none', position: 'relative' }} className={`nav-link ${location.pathname === '/contact' ? 'text-pink-500' : ''}`} smooth={true} duration={500}>
-            Contact us
+            Contact Us
             {location.pathname === '/contact' && <div style={{ position: 'absolute', bottom: '-8px', left: 0, width: '100%', height: '2px', backgroundColor: '#ff69b4' }} />}
           </Link>
         </li>

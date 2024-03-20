@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
 const Rooms = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
+  };
+
+  const navigateToDemo = () => {
+    navigate('/demo'); // Navigate to the demo page
   };
 
   return (
@@ -25,7 +31,7 @@ const Rooms = () => {
             alt='/'
           />
           <div className="absolute inset-0 bg-black opacity-0 hover:opacity-65 transition-opacity duration-300 flex items-center justify-center">
-            <button className="bg-white text-black px-4 py-2 rounded">Learn More</button>
+            <button className="bg-white text-black px-4 py-2 rounded" onClick={navigateToDemo}>Learn More</button>
           </div>
         </div>
         <img
@@ -41,10 +47,10 @@ const Rooms = () => {
           />
           <div className="absolute inset-0 bg-black opacity-0 hover:opacity-65 transition-opacity duration-300 flex items-center justify-center">
             <button className="bg-white text-black px-4 py-2 rounded">Learn More</button>
-          </div>
         </div>
       </div>
-    </div>
+    </div>\
+  </div>
   );
 };
 
