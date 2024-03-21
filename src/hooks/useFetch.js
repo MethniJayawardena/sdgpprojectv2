@@ -10,7 +10,9 @@ const useFetch = (url)=>{
             setLoading(true);
 
             try{
-                const res = await fetch(url);
+                const res = await fetch(url,{
+                    headers:{Authorization:`Bearer ${token}`},
+                });
 
                 if(!res.ok){
                     setError('failed to fetch');

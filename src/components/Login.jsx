@@ -38,23 +38,36 @@ const Login = () => {
                 body:JSON.stringify(credentials),
             });
 
-            const result = await res.json()
-            if (!res.ok) {
-                setError(result.message); // Set error message if login fails
-                setCredentials({email:'', password:''});
-            }
+            const result = await res.json();
+    
+    if (!res.ok) {
+      if (res.status === 401) {
+        setError('Incorrect email or password. Please try again.');
+      } else if (res.status === 404) {
+        setError('User not found.');
+      } else {
+        setError('Failed to login. Please try again.');
+      }
+      return;
+    }
 
-            // console.log(result.data);
-            if (res.ok) {
-                dispatch({ type: 'LOGIN_SUCCESS', payload: result.data });
-                navigate('/');
-
-            }
+    const { token, user, role } = result;
+    dispatch({
+      type: 'LOGIN_SUCCESS',
+      payload: {
+        user:result.data,
+        token:result.token,
+        role:result.role
+      },
+    });
+    navigate('/');
+            console.log(result,"login data")
       
 
             // dispatch({type:'LOGIN_SUCCESS', payload:result.data});
             
-            
+            // navigate('/');
+
         } catch (err) {
             setError('Failed to login. Please try again.'); // Set generic error message
 

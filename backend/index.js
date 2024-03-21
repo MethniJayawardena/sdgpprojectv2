@@ -43,6 +43,7 @@ app.use(cookieParser());
 app.use('/api/v2/auth', authRoute)
 app.use('/api/v2/users', userRoute)
 
+
 app.listen(port,()=>{
     connect();
     console.log('server listening on port',port);

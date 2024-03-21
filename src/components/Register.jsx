@@ -8,7 +8,7 @@ import { BASE_URL } from '../Utils/config';
 const Register = () => {
 
     const [credentials, setCredentials] = useState({
-        userName: undefined,
+        username: undefined,
         email: undefined,
         password: undefined,
         address: undefined,
