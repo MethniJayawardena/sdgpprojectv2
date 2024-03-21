@@ -26,10 +26,17 @@
       const formData = new FormData();
       formData.append('file', fileInput.files[0]);
 
+      const jsonData = {
+        file: fileInput.files[0]
+      };
+
       try {
         const response = await fetch('/predict', {
           method: 'POST',
-          body: formData,
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify(jsonData),
         });
 
         if (!response.ok) {
