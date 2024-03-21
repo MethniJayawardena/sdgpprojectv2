@@ -25,9 +25,38 @@ const Navbar = () => {
 
   return (
     <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300 z-10'>
-      <div>
+      <div className="flex items-center">
         <img src={Logo} alt='Logo Image' style={{ width: '60px', height: '60px' }} />
-      </div>
+        <ul className='hidden md:flex'>
+        {user? (
+          <>
+          <h5 className="mb-0  px-10">Welcome to Internova <span style={{ color: '#ff69b4', fontWeight: 'bold' }}>{user.username}</span></h5>
+          
+          <li className="mr-10 text-white flex items-center text-sm cursor-pointer" onClick={logout} style={{ transition: 'color 0.3s' }}>
+          <span className="text-white hover:text-pink-600 ">Logout</span>
+          </li>
+
+          
+          </> 
+          ):(<>
+            <li className="mr-5 px-5"> {/* Add margin-right for spacing */}
+            <Link to='/login' smooth={true} duration={500}>
+             Login
+            </Link>
+            </li>
+            <li className="mr-4"> {/* Add margin-right for spacing */}
+            <Link to='/register' smooth={true} duration={500}>
+              Register
+            </Link>
+            </li>
+              </>
+             
+
+          )
+          
+        }
+        </ul>
+         </div>
 
       {/* menu */}
       <ul className='hidden md:flex'>
@@ -51,36 +80,12 @@ const Navbar = () => {
         </li>
         <li className="mr-10">
           <Link to='/contact' style={{ textDecoration: 'none', position: 'relative' }} className={`nav-link ${location.pathname === '/contact' ? 'text-pink-500' : ''}`} smooth={true} duration={500}>
-            Contact Us
+            Contact us
             {location.pathname === '/contact' && <div style={{ position: 'absolute', bottom: '-8px', left: 0, width: '100%', height: '2px', backgroundColor: '#ff69b4' }} />}
           </Link>
         </li>
 
-        {user? (
-          <>
-          <h5 className="mb-0  px-10">Welcome to Internova {user.username}</h5>
-          
-          <button className="mr-10 text-white group border-2 flex items-center hover:bg-pink-600 hover:border-pink-600" onClick={logout}>
-          Logout
-          </button>
-          
-          </> 
-          ):(<>
-            <li className="mr-10"> {/* Add margin-right for spacing */}
-            <Link to='/login' smooth={true} duration={500}>
-             Login
-            </Link>
-            </li>
-            <li className="mr-10"> {/* Add margin-right for spacing */}
-            <Link to='/register' smooth={true} duration={500}>
-              Register
-            </Link>
-            </li>
-              </>
-
-          )
-        }
-        
+      
       </ul>
 
       {/* Hamburger */}
