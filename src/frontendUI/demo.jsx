@@ -4,7 +4,7 @@ import backgroundImage from '../images/mic1.jpg'
 const InterviewDemo = () => {
 
   return (
-    <div className="container mx-auto py-80 relative bg-[#00df9a] bg-contain" style={ {backgroundImage: `url(${backgroundImage})`}}>
+    <div className="container mx-auto py-80 relative bg-contain" style={ {backgroundImage: `url(${backgroundImage})`}}>
        <h1 className="text-5xl font-bold mb-4 text-[#0C024B]"> Interview Demo</h1>
       <div className="grid grid-cols-2 gap-8">
         {/* Audio Input Section */}

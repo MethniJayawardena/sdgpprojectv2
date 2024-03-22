@@ -13,6 +13,9 @@ const Rooms = () => {
     navigate('/demo'); // Navigate to the demo page
   };
 
+  const navigateToQuestionnaire = ()=> {
+    navigate('/questionnaire')
+  }
   return (
     <div className={`max-w-[1400px] h-[500px] ${darkMode ? 'bg-blue-900' : 'bg-blue-100'} mx-auto my-20 pt-16 lg:mb-[20%] md:mb-[35%] px-4 grid lg:grid-cols-3 gap-4`}>
       <div className='lg:top-20 relative lg:col-span-1 col-span-2'>
@@ -46,7 +49,7 @@ const Rooms = () => {
             alt='/'
           />
           <div className="absolute inset-0 bg-black opacity-0 hover:opacity-65 transition-opacity duration-300 flex items-center justify-center">
-            <button className="bg-white text-black px-4 py-2 rounded">Learn More</button>
+            <button className="bg-white text-black px-4 py-2 rounded" onClick={navigateToQuestionnaire}>Learn More</button>
         </div>
       </div>
     </div>\

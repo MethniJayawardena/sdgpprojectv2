@@ -10,6 +10,7 @@ import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import PaymentPortal from './components/PaymentPortal.jsx';
 import Demo from './frontendUI/demo.jsx'
+import Questionnaire from './frontendUI/questionnaire.jsx';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/payment" element={<PaymentPortal />} />
             <Route path="/demo" element={<Demo />} />
+            <Route path="/questionnaire" element={<Questionnaire/>} />
         </Routes>
         <Footer/>
       </div>
