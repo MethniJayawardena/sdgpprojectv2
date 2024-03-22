@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Route, Routes,Navigate} from 'react-router-dom';
-import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import React from 'react';
 import Navbar from './components/Navbar.jsx'; // Import Navbar component only
 import Home from './components/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx';

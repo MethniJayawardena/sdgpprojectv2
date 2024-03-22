@@ -6,7 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 import { BASE_URL } from '../Utils/config';
 
 const Register = () => {
-
+// State for storing user credentials and error message
     const [credentials, setCredentials] = useState({
         username: undefined,
         email: undefined,
@@ -26,13 +26,14 @@ const Register = () => {
         setError('');
     };
 
-
+ // Function to handle register button click
     const handleClick = async e =>{
         e.preventDefault();
 
        
 
         try {
+             // Making API call to register endpoint
             const res = await fetch (`${BASE_URL}/auth/register`,{
                 method:'post',
                 headers:{
@@ -40,26 +41,30 @@ const Register = () => {
                 },
                 body:JSON.stringify(credentials),
             })
+            // Handling response
             const result = await res.json(credentials);
 
             if(!res.ok) {
+                 // If response status is not ok, error message
                 setError(result.message);
                 // alert(result.message);
+                return;
                 
             }
 
-            if (res.ok) {
+ // If registration is successful, dispatch success action and navigate to login page
             dispatch({type:'REGISTER_SUCCESS'});
             navigate('/login');
-            }
+            
 
         }catch (err){
+            //display error message
             alert(err.message);
 
     }
 }
 
-  
+  //Register form
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
         <div className='hidden sm:block'>
