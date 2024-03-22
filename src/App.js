@@ -10,6 +10,7 @@ import Login from './components/Login.jsx';
 import Demo from './frontendUI/demo.jsx';
 import Register from './components/Register.jsx';
 import Account from './pages/Account.jsx';
+import Questionnaire from './frontendUI/questionnaire.jsx';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register />} />
             <Route path="/account" element={<Account />}/>
+            <Route path="/questionnaire" element={<Questionnaire />}/>
         </Routes>
         <Footer/>
         
