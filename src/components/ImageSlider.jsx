@@ -54,7 +54,7 @@ const ImageSlider = () => {
         className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
       ></div>
-      <div className="absolute top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold text-center" style={{ fontSize: '45px', fontFamily: 'Poppins' }}>
+      <div className="absolute top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold text-center" style={{ fontSize: '45px', ...poppins }}>
         {slides[currentIndex].description}
       </div>
       {/* Left Arrow */}
