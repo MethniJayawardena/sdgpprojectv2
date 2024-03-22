@@ -3,13 +3,13 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-
-// import userRoute from './routes/users.js';
 import authRoute from './routes/auth.js';
 
-dotenv.config();
+dotenv.config();// Loading environment variables from .env file
 const app =express();
 const port = process.env.PORT || 8000; // Default port is 8000 if PORT is not defined in .env
+
+// CORS options for allowing all origins and credentials
 const corsOptions = {
     origin:true,
     credentials:true
@@ -17,6 +17,7 @@ const corsOptions = {
 
 mongoose.set("strictQuery",false);
 
+// Function to connect to MongoDB database
 const connect = async()=>{
     try{
         await mongoose.connect(process.env.MONGO_URI,{
@@ -32,7 +33,7 @@ const connect = async()=>{
     }
 }
 
-
+// Root route to check if the API is working
 app.get("/",(req,res)=>{
     res.send("api is working")
 })
@@ -41,10 +42,9 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use('/api/v2/auth', authRoute)
-// app.use('/api/v2/users', userRoute)
 
-
+// Start the server
 app.listen(port,()=>{
-    connect();
+    connect();// Connect to MongoDB database
     console.log('server listening on port',port);
 });
