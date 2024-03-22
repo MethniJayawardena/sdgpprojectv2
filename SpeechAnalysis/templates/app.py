@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,send_from_directory
 import joblib
 import numpy as np
 
@@ -6,6 +6,10 @@ app = Flask(__name__)
 
 # Load the pickled model
 model = joblib.load('./Emotion_Voice_Detection_Model.pkl')
+
+@app.route('/')
+def index():
+    return send_from_directory('templates', 'index.html')
 
 # Define a route for prediction
 @app.route('/api/predict', methods=['POST'])
