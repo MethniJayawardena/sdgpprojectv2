@@ -1,5 +1,6 @@
 import React from 'react';
 import laptopImage from '../images/backgroundimg.jpg';
+import LaptopVid from '../images/backgroundvid.mp4'
 
 const dmSerifText = {
   fontFamily: '"DM Serif Text", serif',
@@ -12,9 +13,11 @@ const poppins = {
 const Hero = () => {
   return (
     <div className='relative w-full h-screen'>
-      {/* Background image */}
-      <img className='absolute top-0 left-0 w-full h-full object-cover' src={laptopImage} alt="Person using a laptop" />
-      
+      {/* Background video */}
+      <video className='absolute top-0 left-0 w-full h-full object-cover' autoPlay loop muted>
+        <source src={LaptopVid} type='video/mp4' />
+        Your browser does not support the video tag.
+      </video>
       {/* Overlay */}
       <div className='absolute top-0 left-0 w-full h-full bg-black opacity-60'></div>
       
