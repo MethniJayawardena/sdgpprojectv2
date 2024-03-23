@@ -7,7 +7,7 @@ import authRoute from './routes/auth.js';
 
 dotenv.config();// Loading environment variables from .env file
 const app =express();
-const port = process.env.PORT || 8000; // Default port is 8000 if PORT is not defined in .env
+const port = process.env.PORT || 8000; // Default port 
 
 // CORS options for allowing all origins and credentials
 const corsOptions = {

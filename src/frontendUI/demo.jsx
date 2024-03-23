@@ -1,7 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef,useContext } from 'react';
 import backgroundImage from '../images/mic1.jpg'
+import {useNavigate } from 'react-router-dom';
+import { AuthContext } from './../context/AuthContext';
 
 const InterviewDemo = () => {
+
+  const { user} = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the user is logged in, if not, redirect to login page
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   return (
     <div className="container mx-auto py-80 relative bg-contain" style={ {backgroundImage: `url(${backgroundImage})`}}>

@@ -1,6 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
+import {useNavigate } from 'react-router-dom';
+import { AuthContext } from './../context/AuthContext';
 
 const Questionnaire = () => {
+
+  const { user} = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the user is logged in, if not, redirect to login page
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
+
   // Array of Java coding questions
   const questions = [
     {

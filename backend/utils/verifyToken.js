@@ -37,7 +37,7 @@ const verifyToken = (req,res,next) =>{
 // verify if a user is authorized to access a resource
 export const verifyUser = (req,res,next)=>{
     verifyToken(req,res,next,()=>{
-        if(req.user.id === req.params.id || req.user.role === "admin"){
+        if(req.user.id === req.params.id){
             next();
         }else{
             return res
@@ -51,19 +51,4 @@ export const verifyUser = (req,res,next)=>{
 };
 
 
-// // Middleware to verify if a user is an admin
-// export const verifyAdmin = (req,res,next)=>{
-//     verifyToken(req,res,next,()=>{
-//         if(req.user.role == "admin"){
-//             next();
-//         }else{
-//             return res
-//             .status(401)
-//             .json({
-//                 success:false,
-//                 message:"You're not authorize"
-//             });
-//         }
-//     });
-// };
 
