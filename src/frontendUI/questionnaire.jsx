@@ -306,7 +306,33 @@ const Questionnaire = () => {
     const [codeInput, setCodeInput] = useState('');
     const [showAnswer, setShowAnswer] = useState(false); // State to control whether to show the answer
     
+    const [code, setCode] = useState('');
+    const [output, setOutput] = useState('');
+    const clientId = 'YOUR_CLIENT_ID';
+    const clientSecret = 'YOUR_CLIENT_SECRET';
 
+    const runCode = async () => {
+      const response = await fetch('https://api.jdoodle.com/v1/execute', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              clientId: clientId,
+              clientSecret: clientSecret,
+              script: code,
+              language: 'java',
+              versionIndex: '3'
+          })
+      });
+      const data = await response.json();
+      setOutput(data.output || data.error);
+  };
+
+  // Event handler for code input change
+  const handleCodeChange = (e) => {
+      setCode(e.target.value);
+  };
     const handleCodeInputChange = (e) => {
         setCodeInput(e.target.value);
     };
@@ -364,15 +390,17 @@ const Questionnaire = () => {
           </div>
           {/* Right side - Code Editor and Compiler */}
           <div>
-            <h2 className="text-xl md:text-2xl font-bold mb-4">Compiler</h2>
-            {/* Code input */}
-            <textarea value={codeInput} onChange={handleCodeInputChange} rows="15" className="mb-4 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter your Java code here"></textarea>
-            {/* Placeholder for compiler output */}
-            <div className="border border-gray-300 rounded-md p-4 md:p-8">
-              {/* Compiler output will be displayed here */}
-            </div>
+              <h2 className="text-xl md:text-2xl font-bold mb-4">Compiler</h2>
+              <textarea value={codeInput} onChange={handleCodeInputChange} rows="15" className="mb-4 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter your Java code here"></textarea>
+              <button onClick={runCode} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Run Code
+              </button>
+              <div className="mt-4">
+                <h2 className="text-xl md:text-2xl font-bold mb-4">Output:</h2>
+                <pre className="text-sm">{output}</pre>
+              </div>
           </div>
-          </div>
+        </div>
       </div>
   );
 };
