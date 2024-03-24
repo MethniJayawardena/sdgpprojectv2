@@ -6,18 +6,14 @@ from joblib import load
 app = Flask(__name__)
 
 # Load the model and encoder
-model = load('emotion_detection_model.joblib')
-enc = load('label_encoder.joblib')
+model = load('/Users/shehanfernando/Downloads/sdgpprojectv2/SpeechAnalysis/emotion_detection_model.joblib')
+enc = load('/Users/shehanfernando/Downloads/sdgpprojectv2/SpeechAnalysis/label_encoder.joblib')
 
 # Function to extract MFCC features
 def extract_mfcc(audio_file_path):
     data, sampling_rate = librosa.load(audio_file_path)
     mfcc_features = librosa.feature.mfcc(y=data, sr=sampling_rate, n_mfcc=40)
     return np.mean(mfcc_features.T, axis=0)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
