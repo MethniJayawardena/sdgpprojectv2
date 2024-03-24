@@ -26,3 +26,4 @@ yarn-error.log*
 .venv
 .myenv
 Crema_dataset
+TESS Toronto emotional speech set data 
