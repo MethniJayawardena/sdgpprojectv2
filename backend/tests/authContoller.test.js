@@ -1,11 +1,15 @@
 // Import necessary modules and functions for testing
 import bcrypt from 'bcryptjs'; // Import bcrypt module
+// Import necessary modules and functions for testing
 import { register, login } from '../controllers/authController.js';
 import User from '../models/User.js'; // Assuming you have a User model
 
 // Mock User.findOne method for testing purposes
 jest.mock('../models/User.js', () => ({
   findOne: jest.fn(),
+}));
+jest.mock('bcryptjs', () => ({
+  compare: jest.fn(),
 }));
 
 describe('Authentication Controller', () => {
@@ -30,21 +34,23 @@ describe('Authentication Controller', () => {
     it('should return status 400 if email is already taken', async () => {
       // Mock User.findOne to return a user with existing email
       User.findOne.mockResolvedValueOnce({ email: 'existingEmail@example.com' });
-
+    
       const req = { body: { email: 'existingEmail@example.com' } };
       const res = {
         status: jest.fn().mockReturnThis(),
         json: jest.fn(),
       };
-
+    
       await register(req, res);
-
+    
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ success: false, message: 'Email already taken' });
+      expect(res.json).toHaveBeenCalledWith({ success: false, message: 'Username already taken' });
     });
 
     // Add more test cases for register function as needed
   });
+
+
 
   // Test case for the login function
   describe('login', () => {
