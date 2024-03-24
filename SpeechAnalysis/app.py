@@ -5,7 +5,7 @@ from joblib import load
 
 app = Flask(__name__)
 
-# Load the model and encoder
+# Loads the model and encoder
 model = load('emotion_detection_model.joblib')
 enc = load('label_encoder.joblib')
 
