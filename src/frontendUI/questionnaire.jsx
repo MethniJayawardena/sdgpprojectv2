@@ -200,6 +200,7 @@ const Questionnaire = () => {
             answer: data.answer, // Set the answer in the state
             query: data.query,
           });
+          setShowAnswer(true);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
@@ -460,13 +461,15 @@ const Questionnaire = () => {
             Search
           </button>
           </div>
+            <div style={{ display: showAnswer ? 'block' : 'none' }}>
           <textarea
-          id="searchInput"
-          rows="15"
-          value={data.answer}
-          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          readOnly
-          </textarea>
+            id="searchInput"
+            rows="15"
+            value={showAnswer}
+            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            readOnly
+          />
+          </div>
         </div>
       </div>
     </div>
