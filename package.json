@@ -2,13 +2,18 @@
   "name": "sdgpprojectv2",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://127.0.0.1:5000",
   "dependencies": {
+    "@monaco-editor/react": "^4.6.0",
+    "@stripe/react-stripe-js": "^2.6.2",
+    "@stripe/stripe-js": "^3.0.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
+<<<<<<< HEAD
     "react-router-dom": "^6.22.2",
 <<<<<<< HEAD
     "react-scripts": "^5.0.1",
@@ -16,6 +21,13 @@
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.0",
 >>>>>>> origin
+=======
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "5.0.1",
+    "react-scroll": "^1.9.0",
+    "reactstrap": "^9.2.2",
+    "wavesurfer.js": "^7.7.5",
+>>>>>>> da459bd98da15a78fd5ab1e4e89a4614bc6b2cc6
     "web-vitals": "^2.1.4"
   },
   "scripts": {
