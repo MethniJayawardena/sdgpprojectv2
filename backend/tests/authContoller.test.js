@@ -1,4 +1,5 @@
 // Import necessary modules and functions for testing
+import bcrypt from 'bcryptjs'; // Import bcrypt module
 import { register, login } from '../controllers/authController.js';
 import User from '../models/User.js'; // Assuming you have a User model
 
