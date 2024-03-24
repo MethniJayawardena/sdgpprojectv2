@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+/flask-server/venv
 /node_modules
 /.pnp
 .pnp.js
@@ -26,4 +27,8 @@ yarn-error.log*
 .venv
 .myenv
 Crema_dataset
+<<<<<<< HEAD
 TESS Toronto emotional speech set data
+=======
+TESS Toronto emotional speech set data 
+>>>>>>> d392c3f482b8afeac05e994a46ebe086d5da45d3

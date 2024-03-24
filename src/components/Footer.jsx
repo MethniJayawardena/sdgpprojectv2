@@ -4,25 +4,27 @@ import { TiSocialPinterest } from 'react-icons/ti';
 
 const Footer = () => {
   return (
-    <div className='w-full mt-24 bg-gray-900 text-gray-300 py-2 px-2'>
+    <div className='w-full  bg-gray-900 text-gray-300 py-2 px-2'>
       <div className='max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-6 border-b-2 border-gray-600 py-8 px-4'>
         <div>
           <h6 className='font-bold uppercare pt-2'>Solutions</h6>
           <ul>
-            <li className='py-1'>Travel</li>
+            <li className='py-1'>Plans</li>
             <li className='py-1'>Booking</li>
-            <li className='py-1'>Flights</li>
-            <li className='py-1'>Cruises</li>
-            <li className='py-1'>Ground</li>
+            <li className='py-1'>Terms and Conditions</li>
+            <li className='py-1'>Privacy Policy</li>
+            <li className='py-1'>license</li>
           </ul>
         </div>
         <div>
-          <h6 className='font-bold uppercare pt-2'>Support</h6>
+          <h6 className='font-bold uppercare pt-2'>Developers</h6>
           <ul>
-            <li className='py-1'>Pricing</li>
-            <li className='py-1'>Documentation</li>
-            <li className='py-1'>Tours</li>
-            <li className='py-1'>Refunds</li>
+            <li className='py-1'>Chenuka Sarathchandra</li>
+            <li className='py-1'>Sanuth Mandepa</li>
+            <li className='py-1'>Methni Jayawardena</li>
+            <li className='py-1'>Shehan Fernando</li>
+            <li className='py-1'>Vihanga Lakdam</li>
+            
           </ul>
         </div>
         <div>
@@ -30,7 +32,6 @@ const Footer = () => {
           <ul>
             <li className='py-1'>About</li>
             <li className='py-1'>Blog</li>
-            <li className='py-1'>Jobs</li>
             <li className='py-1'>Press</li>
             <li className='py-1'>Partners</li>
           </ul>

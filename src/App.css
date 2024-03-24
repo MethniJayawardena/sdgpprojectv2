@@ -4,7 +4,7 @@
   font-weight: normal;
   font-style: normal;
 }
-
+/* new */
 @font-face {
   font-family: 'DM Serif Text';
   src: url('/fonts/DMSerifDisplay-Bold.woff2') format('woff2');
@@ -16,4 +16,13 @@
   src: url('fonts/Ubuntu-Regular.ttf') format('woff2');
   font-weight: bold;
   font-style: normal;
+}
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark-mode {
+  background-color: #222;
+  color: #fff;
 }
