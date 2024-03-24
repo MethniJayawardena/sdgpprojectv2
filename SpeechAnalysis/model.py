@@ -5,9 +5,15 @@ from joblib import load
 
 app = Flask(__name__)
 
+<<<<<<< HEAD:SpeechAnalysis/app.py
+# Loads the model and encoder
+model = load('emotion_detection_model.joblib')
+enc = load('label_encoder.joblib')
+=======
 # Load the model and encoder
 model = load('/Users/shehanfernando/Downloads/sdgpprojectv2/SpeechAnalysis/emotion_detection_model.joblib')
 enc = load('/Users/shehanfernando/Downloads/sdgpprojectv2/SpeechAnalysis/label_encoder.joblib')
+>>>>>>> d392c3f482b8afeac05e994a46ebe086d5da45d3:SpeechAnalysis/model.py
 
 # Function to extract MFCC features
 def extract_mfcc(audio_file_path):
