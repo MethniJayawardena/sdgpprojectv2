@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx'; // Import Navbar component only
 import Home from './components/Home.jsx';
@@ -11,7 +10,7 @@ import Register from './components/Register.jsx';
 import PaymentPortal from './components/PaymentPortal.jsx';
 import Demo from './frontendUI/demo.jsx';
 import Account from './pages/Account.jsx'
-// import Questionnaire from './frontendUI/questionnaire.jsx';
+import Questionnaire from './frontendUI/questionnaire.jsx';
 
 // function App() {
 //   // useState for setting a JavaScript
@@ -71,47 +70,8 @@ import Account from './pages/Account.jsx'
 
 // export default App;
 // Importing modules
-import React, { useState, useEffect } from "react";
-import Questionnaire from './frontendUI/questionnaire.jsx'; // Import the Questionnaire component
 
 function App() {
-    const [data, setData] = useState({
-        name: "",
-        age: 0,
-        date: "",
-        programming: "",
-    });
-
-    useEffect(() => {
-        // Fetching data from Flask API
-        fetch("/data")
-            .then(res => res.json())
-            .then(data => {
-                setData({
-                    name: data.Name,
-                    age: data.Age,
-                    date: data.Date,
-                    programming: data.programming,
-                });
-            })
-            .catch(error => console.error("Error fetching data:", error));
-    }, []);
-
-    function query(){
-      <div className="App">
-            <header className="App-header">
-                <h1>React and Flask</h1>
-                {/* Displaying data received from Flask API */}
-                <p>{data.name}</p>
-                <p>{data.age}</p>
-                <p>{data.date}</p>
-                <p>{data.programming}</p>
-            </header>
-            {/* Rendering the Questionnaire component */}
-            <Questionnaire />
-        </div>
-    }
-
     return (
       <Router>
         <Navbar />
@@ -127,17 +87,6 @@ function App() {
            <Route path="/questionnaire" element={<Questionnaire />} />
            <Route path="/account" element={<Account/> } /> 
            </Routes>
-          <div className="App">
-            <header className="App-header">
-                <h1>React and Flask</h1>
-                {/* Displaying data received from Flask API */}
-                <p>{data.name}</p>
-                <p>{data.age}</p>
-                <p>{data.date}</p>
-                <p>{data.programming}</p>
-            </header>
-            {/* Rendering the Questionnaire component */}
-        </div>
         <Footer />
       </Router>
       

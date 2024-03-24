@@ -52,7 +52,7 @@ const Rooms = () => {
             <button className="bg-white text-black px-4 py-2 rounded" onClick={navigateToQuestionnaire}>Learn More</button>
         </div>
       </div>
-    </div>\
+    </div>
   </div>
   );
 };

@@ -180,9 +180,32 @@
   
 //   export default Questionnaire;
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import JDoodleCompiler from './JDoodleCompiler';
 
 const Questionnaire = () => {
+    const [data, setData] = useState({
+      answer: "", // Add answer to the state
+      query: "",
+      
+    });
+      // Using useEffect for single rendering
+    useEffect(() => {
+      // Using fetch to fetch the API from Flask server
+      fetch("/data")
+        .then(res => res.json())
+        .then((data) => {
+          // Setting data from the API response
+          setData({
+            answer: data.answer, // Set the answer in the state
+            query: data.query,
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }, []);
+
     const questions = [
         {
                 id: 1,
@@ -306,10 +329,11 @@ const Questionnaire = () => {
     const [codeInput, setCodeInput] = useState('');
     const [showAnswer, setShowAnswer] = useState(false); // State to control whether to show the answer
     
-    const [code, setCode] = useState('');
+    
+
     const [output, setOutput] = useState('');
-    const clientId = 'YOUR_CLIENT_ID';
-    const clientSecret = 'YOUR_CLIENT_SECRET';
+    const clientId = '8cc0ed098863965930312590fee1bb2d';
+    const clientSecret = '57b5c8d5603ccc56d92e8411d72973834a291bdef6e6c4af4600e73a066869f4';
 
     const runCode = async () => {
       const response = await fetch('https://api.jdoodle.com/v1/execute', {
@@ -318,21 +342,22 @@ const Questionnaire = () => {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-              clientId: clientId,
-              clientSecret: clientSecret,
-              script: code,
+              clientId:'8cc0ed098863965930312590fee1bb2d' ,
+              clientSecret: '57b5c8d5603ccc56d92e8411d72973834a291bdef6e6c4af4600e73a066869f4',
+              script: codeInput,
               language: 'java',
               versionIndex: '3'
           })
       });
       const data = await response.json();
       setOutput(data.output || data.error);
-  };
+    };
 
-  // Event handler for code input change
-  const handleCodeChange = (e) => {
-      setCode(e.target.value);
-  };
+    // Event handler for code input change
+
+    const handleCodeChange = (e) => {
+        setCodeInput(e.target.value);
+    };
     const handleCodeInputChange = (e) => {
         setCodeInput(e.target.value);
     };
@@ -356,6 +381,12 @@ const Questionnaire = () => {
     // Function to show the answer based on user's input
     const showAnswerHandler = () => {
         setShowAnswer(true);
+    };
+
+    const handleSearch = () => {
+      // Perform search action here
+      // For now, let's just set the query as the search result
+      setData(prevData => ({ ...prevData, answer: prevData.answer }));
     };
 
     return (
@@ -392,7 +423,7 @@ const Questionnaire = () => {
           <div>
               <h2 className="text-xl md:text-2xl font-bold mb-4">Compiler</h2>
               <textarea value={codeInput} onChange={handleCodeInputChange} rows="15" className="mb-4 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter your Java code here"></textarea>
-              <button onClick={runCode} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              <button onClick={runCode} className="text-sm font-semibold px-4 py-2 bg-indigo-600 text-white rounded-md disabled:opacity-50">
                         Run Code
               </button>
               <div className="mt-4">
@@ -401,7 +432,53 @@ const Questionnaire = () => {
               </div>
           </div>
         </div>
+        <div>
+      <br></br>
+      <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#0C024B]">Search Questionnaire</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 className="text-xl md:text-2xl font-bold mb-4">FullStack Develop Search Engine</h2>
+          <div className="relative">
+            <input
+              type="text"
+              value={data.query}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              placeholder="Search..."
+              onFocus={() => document.getElementById('searchResults').classList.remove('hidden')}
+              onBlur={() => document.getElementById('searchResults').classList.add('hidden')}
+              />
+            <ul id="searchResults" className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-2 py-1 hidden">
+              {/* Replace the list items below with your search results */}
+              <li className="px-4 py-2 cursor-pointer hover:bg-gray-100" onclick="updateSearch('Result 1')">Result 1</li>
+              <li className="px-4 py-2 cursor-pointer hover:bg-gray-100" onclick="updateSearch('Result 2')">Result 2</li>
+              <li className="px-4 py-2 cursor-pointer hover:bg-gray-100" onclick="updateSearch('Result 3')">Result 3</li>
+            </ul>
+          </div>
+          <br></br>
+          <div>
+          <button onClick={handleSearch} className="text-sm font-semibold px-4 py-2 bg-indigo-600 text-white rounded-md disabled:opacity-50">
+            Search
+          </button>
+          </div>
+          <textarea
+          id="searchInput"
+          rows="15"
+          value={data.answer}
+          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          readOnly
+          </textarea>
+        </div>
       </div>
+    </div>
+  
+
+
+
+
+
+      </div>
+      
+      
   );
 };
 
